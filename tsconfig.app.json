@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/app.routes.server.tsxxx"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

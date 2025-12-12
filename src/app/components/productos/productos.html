@@ -1,0 +1,82 @@
+<div class="container">
+
+  <button class="btn-nuevo" (click)="mostrarFormulario = !mostrarFormulario">
+    Nuevo producto
+  </button>
+
+  @if (mostrarFormulario) {
+    <div class="formulario">
+      <input type="text" placeholder="Nombre" [(ngModel)]="nuevoProducto.nombre">
+      <input type="number" placeholder="Precio" [(ngModel)]="nuevoProducto.precio">
+
+      <select [(ngModel)]="nuevoProducto.categoria">
+        <option value="">Seleccione categoría</option>
+        <option value="Ropa">Ropa</option>
+        <option value="Calzado">Calzado</option>
+        <option value="Electrónica">Electrónica</option>
+        <option value="Accesorios">Accesorios</option>
+      </select>
+
+      <button class="btn-guardar" (click)="agregarProducto()">
+        Guardar producto
+      </button>
+    </div>
+  }
+
+  <div class="categorias">
+    <button class="cat-btn" [class.activo]="filtroCategoria === ''" (click)="filtroCategoria = ''">Todas</button>
+    <button class="cat-btn" [class.activo]="filtroCategoria === 'Ropa'" (click)="filtroCategoria = 'Ropa'">Ropa</button>
+    <button class="cat-btn" [class.activo]="filtroCategoria === 'Calzado'" (click)="filtroCategoria = 'Calzado'">Calzado</button>
+    <button class="cat-btn" [class.activo]="filtroCategoria === 'Electrónica'" (click)="filtroCategoria = 'Electrónica'">Electrónica</button>
+    <button class="cat-btn" [class.activo]="filtroCategoria === 'Accesorios'" (click)="filtroCategoria = 'Accesorios'">Accesorios</button>
+  </div>
+
+  @if (carrito.length > 0) {
+    <div class="carrito-box fade-in">
+      <h3>Carrito de compras ({{ carrito.length }})</h3>
+
+      <div class="carrito-items">
+        @for (c of carrito; track c.id) {
+          <div class="carrito-item">
+            <span>{{ c.nombre }}</span>
+            <button class="btn-quitar" (click)="toggleCarrito(c)">Quitar</button>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <h2>Nuestros Productos</h2>
+
+  <div class="buscador">
+    <input type="text" placeholder="Buscar productos..." [(ngModel)]="filtro">
+  </div>
+
+  @if (productosFiltrados.length === 0) {
+    <p class="no-resultados">No se encontraron productos para "{{ filtro }}"</p>
+  }
+
+  <div class="grid">
+    @for (item of productosFiltrados; track item.id) {
+      <div class="card">
+
+        <img class="producto-img" [src]="item.imagen" [alt]="item.nombre">
+
+        <h3>{{ item.nombre }}</h3>
+        <p>${{ item.precio | number: '1.2-2' }}</p>
+
+        <span class="categoria">{{ item.categoria }}</span>
+
+        <button 
+          class="btn-carrito"
+          (click)="toggleCarrito(item)"
+          [class.en-carrito]="estaEnCarrito(item)"
+        >
+          {{ estaEnCarrito(item) ? 'Quitar del carrito' : 'Añadir al carrito' }}
+        </button>
+
+      </div>
+    }
+  </div>
+
+</div>

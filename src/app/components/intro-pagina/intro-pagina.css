@@ -1,0 +1,142 @@
+/* Fondo general */
+.intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 50vh;   /* 👈 ANTES 100vh — ahora más compacto */
+  
+  background: #ffffff;
+  padding: 40px 20px 20px; /* un poco más arriba */
+  margin-bottom: 20px;     /* acerca la sección siguiente */
+}
+
+
+/* Tarjeta central */
+.intro-content {
+  background: #ffffff; /* ✔ Tarjeta blanca */
+  padding: 40px 45px;
+  border-radius: 18px;
+  text-align: center;
+
+  color: #2c3e50; /* ✔ Texto oscuro */
+
+  max-width: 550px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  animation: fade-up 0.8s ease;
+}
+
+/* Título */
+.intro-content h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #2c3e50; /* ✔ Texto visible sobre blanco */
+}
+
+.intro-content h1 span {
+  color: #f1c40f;
+}
+
+/* Texto */
+.intro-content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  color: #2c3e50; /* ✔ gris oscuro */
+}
+
+/* Botón */
+.intro-btn {
+  background: #f1c40f;
+  color: #2c3e50;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.intro-btn:hover {
+  transform: scale(1.08);
+  background: #2c3e50;
+  color: #fff;
+}
+
+/* Animaciones */
+.fade-in {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: appear 0.8s forwards ease-out;
+}
+
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.8s; }
+
+
+
+/* ========================================= */
+/* 🔽 Sección de productos destacados */
+/* ========================================= */
+
+.productos-preview {
+  text-align: center;
+  padding: 40px 20px 60px;
+}
+
+.productos-preview h2 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Grid de carátulas */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Caja individual */
+.preview-item {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+  background: white;
+}
+
+.preview-item:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Imagen */
+.preview-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Animaciones */
+.delay-3 {
+  animation-delay: 1.2s;
+}
+
+
+
+@keyframes appear {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

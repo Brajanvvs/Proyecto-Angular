@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.layout {
+  min-height: 100vh;         /* Toda la pantalla */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;                   /* Empuja el footer abajo */
+}
+
+app-footer {
+  flex-shrink: 0;            /* No se encoge */
+}
